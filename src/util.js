@@ -20,7 +20,7 @@ const casesTypeColors = {
     rgb: "rgb(251, 68, 67)",
     half_op: "rgba(251, 68, 67, 0.5)",
     multiplier: 2000,
-  },
+  }
 };
 
 export const sortData = (data) => {
