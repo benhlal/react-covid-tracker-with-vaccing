@@ -26,13 +26,13 @@ const StyledTableRow = withStyles((theme) => ({
     },
 }))(TableRow);
 
-function createData(candidate, phase, sponsors, institutions, fundings, details) {
+function createData(candidate, phase, sponsors, institutions, trialPhase, details) {
     return {
         candidate,
         phase,
         sponsors,
         institutions,
-        fundings,
+        trialPhase,
         details
     };
 }
@@ -56,10 +56,10 @@ function VaccineTable() {
                             data.forEach(element => {
                                 rows.push(createData(
                                     element.candidate,
-                                    element.trialPhase,
+                                    element.mechanism,
                                     element.sponsors,
                                     element.institutions,
-                                    element.funding,
+                                    element.trialPhase,
                                     element.details));
                             });
                             setVaccine(rows);
@@ -70,7 +70,7 @@ function VaccineTable() {
             getVaccinesData();
         },
         []);
-    console.log("vacine" + vaccine.length);
+    console.log("vaccine" + vaccine.length);
 
 
     return (
@@ -79,10 +79,10 @@ function VaccineTable() {
                 <TableHead>
                     <TableRow>
                         <StyledTableCell>Candidate</StyledTableCell>
-                        <StyledTableCell align="right">Phase</StyledTableCell>
+                        <StyledTableCell align="right">Mechanism</StyledTableCell>
                         <StyledTableCell align="right">Sponsors</StyledTableCell>
                         <StyledTableCell align="right">Institutions</StyledTableCell>
-                        <StyledTableCell align="right">Funding</StyledTableCell>
+                        <StyledTableCell align="right">Phase</StyledTableCell>
                         <StyledTableCell align="right">Details</StyledTableCell>
                     </TableRow>
                 </TableHead>
@@ -101,7 +101,7 @@ function VaccineTable() {
                                 <ul>{row.institutions.map(institute => <li>{institute}</li>)}</ul>
                             </StyledTableCell>
                             <StyledTableCell align="right">
-                                <ul>{row.fundings.map(funder => <li>{funder}</li>)}</ul>
+                                {row.trialPhase}
                             </StyledTableCell>
                             <StyledTableCell align="right"><a href="">details</a></StyledTableCell>
                         </StyledTableRow>
